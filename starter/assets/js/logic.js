@@ -26,7 +26,7 @@ var quizQuestions = [
   {
   question: "String values must be enclosed within ____ when being assigned to variables.",
   a: "commas",
-  b:  "curly brackets",
+  b: "curly brackets",
   c: "quotes",
   d: "parenthesis",
   correctAnswer: "quotes",
@@ -35,7 +35,7 @@ var quizQuestions = [
   question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
   a: "Javascript", 
   b: "terminal / bash",
-  c:  "for loops",
+  c: "for loops",
   d: "console log",
   correctAnswer: "console log",
   },
@@ -56,12 +56,12 @@ var startScreen = document.getElementById('start-screen');
 
 var questionIndex = 0;
 var score = 0;
+var timeLeft = 75;
 
 questions.style.display = "none";
 
-
 function time() {
-  var timeLeft = 75;
+
   var timeInterval = setInterval(function () {
       timeLeft--;
       timerEl.textContent = timeLeft + " seconds left.";
@@ -80,16 +80,41 @@ function startQuestions() {
 
 function questionDisplay() {
   questionTitle.textContent = quizQuestions[questionIndex].question;
-  // choices.innerHTML = "";
   choiceA.textContent = quizQuestions[questionIndex].a;
   choiceB.textContent = quizQuestions[questionIndex].b;
   choiceC.textContent = quizQuestions[questionIndex].c;
   choiceD.textContent = quizQuestions[questionIndex].d;
 }
 
+function checkAnswer() {
+
+  var selectedAnswer = document.querySelector('input[type=radio]:checked');
+  var answer = selectedAnswer.value;
+  console.log(answer);
+  console.log(quizQuestions[questionIndex].correctAnswer);
+  
+  if (quizQuestions[questionIndex].correctAnswer.checked) {
+    console.log("Correct");
+  }
+}
+
 function changeQuestion() {
   questionIndex++;
-  questionDisplay();
+
+  if (questionIndex < quizQuestions.length) {
+    questionDisplay();
+  } else {
+    endQuiz();
+  }
+
+  var selectedAnswer = document.querySelector('input[type=radio]:checked');
+  var answer = selectedAnswer.value;
+  console.log(answer);
+  console.log(quizQuestions[questionIndex].correctAnswer);
+}
+
+function endQuiz() {
+  window.location.href = "highscores.html"
 }
 
 startBtn.onclick = startQuestions;
