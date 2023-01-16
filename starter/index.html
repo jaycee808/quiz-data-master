@@ -25,9 +25,19 @@
         <button id="start">Start Quiz</button>
       </div>
 
-      <div id="questions" class="hide">
+      <div id="questions">
         <h2 id="question-title">Title</h2>
-        <div id="choices" class="choices">Choice</div>
+        <div id="choices" class="choices">
+          <input type="radio" name="answer">
+            <label for="choice-a" id="choice-a" class="choice-a" value="a">A</label>
+          <input type="radio" name="answer">
+            <label for="choice-b" id="choice-b" class="choice-b" value="b">B</label>
+          <input type="radio" name="answer">
+            <label for="choice-c" id="choice-c" class="choice-c" value="c">C</label>
+          <input type="radio" name="answer">
+            <label for="choice-d" id="choice-a" class="choice-a" value="d">D</label>
+      </div>
+      <button id="submit">Submit</button>
       </div>
 
       <div id="end-screen" class="hide">
