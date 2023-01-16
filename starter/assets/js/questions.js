@@ -1,0 +1,42 @@
+var quizQuestions = [
+    {
+    question: "Commonly used data types DO NOT include:",
+    a: "strings", 
+	b: "booleans",
+	c: "alerts",
+	d: "numbers",
+    correctAnswer: "alerts",
+    },
+    {
+    question: "The condition in an if / else statement is enclosed within ____.",
+	a: "quotes",
+	b: "curly brackets",
+	c: "parentheses",
+	d: "square brackets",
+    correctAnswer: "parentheses",
+    },
+    {
+    question: "Arrays in Javascript can be used to store ____.",
+	a: "numbers and strings",
+	b: "other arrays",
+	c: "booleans",
+	d: "all of the above",
+    correctAnswer: "all of the above",
+    },
+    {
+    question: "String values must be enclosed within ____ when being assigned to variables.",
+	a: "commas",
+	b:  "curly brackets",
+	c: "quotes",
+	d: "parenthesis",
+    correctAnswer: "quotes",
+    },
+    {
+    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+	a: "Javascript", 
+	b: "terminal / bash",
+	c:  "for loops",
+	d: "console log",
+    correctAnswer: "console log",
+    },
+];
