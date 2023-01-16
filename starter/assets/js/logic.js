@@ -87,4 +87,10 @@ function questionDisplay() {
   choiceD.textContent = quizQuestions[questionIndex].d;
 }
 
+function changeQuestion() {
+  questionIndex++;
+  questionDisplay();
+}
+
 startBtn.onclick = startQuestions;
+submitBtn.onclick = changeQuestion;
