@@ -43,15 +43,13 @@ var quizQuestions = [
 
 var timerEl = document.getElementById('time');
 var startQuiz = document.getElementById('start');
-var questions = document.getElementById('questions');
-var startScreen = document.getElementById('start-screen');
-var questionTitle = document.getElementById('question-title');
-var optionOne = document.getElementById('optionOne');
-var optionTwo = document.getElementById('optionTwo');
-var optionThree = document.getElementById('optionThree');
-var submitBtn = document.getElementById('submit');
 var quiz = document.getElementById('quiz');
-var options = document.getElementById('options');
+var questionTitle = document.getElementById('question-title');
+var questions = document.getElementById('questions');
+var choices = document.getElementById('choices');
+var submitBtn = document.getElementById('submit');
+var startScreen = document.getElementById('start-screen');
+
 
 startQuiz.addEventListener('click',
 function time() {
@@ -65,17 +63,3 @@ function time() {
   }
 }, 1000)},
 );
-
-startQuiz.addEventListener('click',
-  function display() {
-  startScreen.style.display = 'none';
-  quiz.appendChild(questionTitle);
-  quiz.appendChild(optionOne);
-  quiz.appendChild(optionTwo);
-  quiz.appendChild(optionThree);
-  quiz.appendChild(submitBtn);
-    time();
-});
-
-
-
