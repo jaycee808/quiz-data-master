@@ -42,11 +42,12 @@ ol {
   padding-left: 0px;
   max-height: 400px;
   overflow: auto;
+  
 }
 
 li {
   padding: 5px;
-  list-style: inside;
+  list-style: none;
 }
 
 li:nth-child(odd) {
