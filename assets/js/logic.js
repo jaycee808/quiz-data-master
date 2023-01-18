@@ -53,6 +53,11 @@ var choiceC = document.getElementById('choice-c');
 var choiceD = document.getElementById('choice-d');
 var submitBtn = document.getElementById('submit');
 var startScreen = document.getElementById('start-screen');
+var radioBtnA = document.getElementById('radioBtn-a');
+var radioBtnB = document.getElementById('radioBtn-b');
+var radioBtnC = document.getElementById('radioBtn-c');
+var radioBtnD = document.getElementById('radioBtn-d');
+var finalScore = document.getElementById('highscores');
 
 var questionIndex = 0;
 var score = 0;
@@ -81,9 +86,13 @@ function startQuestions() {
 function questionDisplay() {
   questionTitle.textContent = quizQuestions[questionIndex].question;
   choiceA.textContent = quizQuestions[questionIndex].a;
+  radioBtnA.value = quizQuestions[questionIndex].a;
   choiceB.textContent = quizQuestions[questionIndex].b;
+  radioBtnB.value = quizQuestions[questionIndex].b;
   choiceC.textContent = quizQuestions[questionIndex].c;
+  radioBtnC.value = quizQuestions[questionIndex].c;
   choiceD.textContent = quizQuestions[questionIndex].d;
+  radioBtnD.value = quizQuestions[questionIndex].d;
 }
 
 function checkAnswer() {
@@ -93,9 +102,15 @@ function checkAnswer() {
   console.log(answer);
   console.log(quizQuestions[questionIndex].correctAnswer);
   
-  if (quizQuestions[questionIndex].correctAnswer.checked) {
-    console.log("Correct");
+  // if (quizQuestions[questionIndex].correctAnswer === answer) {
+  //   console.log("Correct");
+  // }
+
+  if (quizQuestions[questionIndex].correctAnswer !== answer) {
+    timeLeft -= 15;
   }
+  console.log("score: " + timeLeft);
+  changeQuestion();
 }
 
 function changeQuestion() {
@@ -106,16 +121,11 @@ function changeQuestion() {
   } else {
     endQuiz();
   }
-
-  var selectedAnswer = document.querySelector('input[type=radio]:checked');
-  var answer = selectedAnswer.value;
-  console.log(answer);
-  console.log(quizQuestions[questionIndex].correctAnswer);
 }
 
 function endQuiz() {
-  window.location.href = "highscores.html"
+  window.location.href = "highscores.html";
 }
 
 startBtn.onclick = startQuestions;
-submitBtn.onclick = changeQuestion;
+submitBtn.onclick = checkAnswer;
