@@ -41,6 +41,7 @@ var quizQuestions = [
   },
 ];
 
+// Global variables
 var timerEl = document.getElementById('time');
 var startBtn = document.getElementById('start');
 var quiz = document.getElementById('quiz');
@@ -58,13 +59,21 @@ var radioBtnB = document.getElementById('radioBtn-b');
 var radioBtnC = document.getElementById('radioBtn-c');
 var radioBtnD = document.getElementById('radioBtn-d');
 var finalScore = document.getElementById('highscores');
+var endScreen = document.getElementById('end-screen');
+var initials = document.getElementById('initials');
+var results = document.getElementsByClassName('final-score');
+var initialsBtn = document.getElementsByClassName('initialsBtn');
 
+// empty variables
 var questionIndex = 0;
 var score = 0;
 var timeLeft = 75;
 
+// hide displays on start screen
 questions.style.display = "none";
+endScreen.style.display = "none";
 
+//function to start timer
 function time() {
 
   var timeInterval = setInterval(function () {
@@ -76,6 +85,7 @@ function time() {
   }
 }, 1000)}
 
+// function to start quiz
 function startQuestions() {
   startScreen.style.display = "none";
   questions.style.display = "block";
@@ -83,6 +93,7 @@ function startQuestions() {
   questionDisplay();
 }
 
+// function to display questions
 function questionDisplay() {
   questionTitle.textContent = quizQuestions[questionIndex].question;
   choiceA.textContent = quizQuestions[questionIndex].a;
@@ -95,37 +106,48 @@ function questionDisplay() {
   radioBtnD.value = quizQuestions[questionIndex].d;
 }
 
+// functions to check answers if answers are correct
 function checkAnswer() {
-
   var selectedAnswer = document.querySelector('input[type=radio]:checked');
   var answer = selectedAnswer.value;
   console.log(answer);
   console.log(quizQuestions[questionIndex].correctAnswer);
-  
-  // if (quizQuestions[questionIndex].correctAnswer === answer) {
-  //   console.log("Correct");
-  // }
 
+  // if statement to deduct time if answer is wrong
   if (quizQuestions[questionIndex].correctAnswer !== answer) {
     timeLeft -= 15;
   }
   console.log("score: " + timeLeft);
+  // call function to change question
   changeQuestion();
 }
 
+// function to change question
 function changeQuestion() {
   questionIndex++;
 
+  // if else statement to either display next question or go to screen to add initials
   if (questionIndex < quizQuestions.length) {
     questionDisplay();
   } else {
-    endQuiz();
+    userAddInitials();
   }
 }
 
+// function to add initials
+function userAddInitials() {
+  questions.style.display = "none";
+  endScreen.style.display = "block";
+  results.innerText = timeLeft;
+  console.log("score: " + timeLeft);
+}
+
+// function to end quiz
 function endQuiz() {
   window.location.href = "highscores.html";
 }
 
+// event listeners to call functions when buttons are clicked
 startBtn.onclick = startQuestions;
 submitBtn.onclick = checkAnswer;
+initialsBtn.onclick = endQuiz;
